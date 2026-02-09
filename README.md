@@ -25,6 +25,3 @@ This project provides:
 - **Frontend:** HTML, CSS, Jinja2
 
 ---
-
-## 📂 Project Structure
-
