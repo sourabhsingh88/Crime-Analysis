@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LINEAR REGRESSION</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/graphanalysis.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/K-means.css')}}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="{{url_for('static',filename='javascript/linearregression.js')}}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/js/skulpt.min.js" type="text/javascript"></script>
+    <script src="http://www.skulpt.org/js/skulpt-stdlib.js" type="text/javascript"></script>
+
+
+
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+
+    <script src="https://kit.fontawesome.com/7bdcd846e8.js" crossorigin="anonymous"></script>
+
+
+
+    <script src="https://cdn.lordicon.com/libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+
+
+</head>
+<style>
+    .prediction-input {
+        font-size: 20px;
+        font-weight: bold;
+        color: #222222;
+    }
+    
+    .prediction-label {
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+
+
+
+
+
+<body onload="tablefilling(1);">
+    <nav class="main" style="width: 100%;">
+        <a href="{{url_for('index')}}"><label style="margin-left:0;"class="logo">CRIME ANALYSIS</label></a>
+        <ul>
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+        <nav class="secondnav">
+            <label class="log" href="#"> LINEAR REGRESSION</label>
+        </nav>
+
+    </nav>
+    <div style=" padding:2px; margin-top: 120px;">
+
+    </div>
+    <div style="display: flex; margin-top: 40px; justify-content: center;">
+        <p style="padding: 8px; background-color: #bbbb; border-radius: 10px; border: 1px solid black;"><b>Enter the Following Details:</b></p>
+    </div>
+    <div class="predictions" style="display:inline-block; margin-top: 50px; display: flex; margin-left: 31%;">
+
+        <form action="{{url_for('linearreg')}}" method="post">
+
+            <div class="selects">
+                <div class="for-select">
+                    <label for="state_input">State:</label>
+                    <select id="state_input" name="state_input"></select>
+                </div>
+
+                <script language="javascript">
+                    populatestates("state_input");
+                </script>
+                <div class="for-select" style="margin-left:40px;">
+                    <label for="year-input">Year:</label>
+                    <select name="year" id="year-input" style=" padding :10px 0px;">
+                    <option disabled selected> Select Year </option>
+                </select>
+                </div>
+                <script>
+                    Addyears("year-input");
+                </script>
+            </div>
+
+
+            <button class="button" style=" margin-left:59%; margin-top: 8%;" onclick="document.getElementById('prediction-input').style.display='block'">Submit</button>
+
+
+            <br>
+    </div>
+    <div style=" display: flex; justify-content:center ; margin-top: 40px; margin-bottom: 60px; ">
+        <label class="prediction-label" style="margin-right: 15px;" for="prediction-input"><b>PREDICTION:</b></label>
+        <p class="prediction-input" id="prediction-input">{{ prediction_text }}
+    </div>
+    <script>
+        labelchanges();
+    </script>
+    </form>
+
+
+
+    <div style="margin-left:12%; width: 70%; margin-right:12%; margin-bottom:30px; ">
+
+
+        <div style=" margin-top: 30px; margin-left: 20px; border-radius:10px; text-align:center; text-decoration: none; background-color:#bbbb; padding:4px;">
+            <a href="{{url_for('datadisp')}}">CLICK HERE TO VIEW THE DATA SET</a>
+        </div>
+
+
+
+
+
+        <!---This is for prediction-->
+
+        </section>
+
+    </div>
+    <footer style="bottom:0">
+        <p> Copyright &copy; 2023. All rights reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>

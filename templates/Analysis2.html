@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis2(2014-2021)</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/graphanalysis.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/K-means.css')}}">
+
+</head>
+<style>
+
+</style>
+<script type="text/javascript">
+    var states_arr = new Array("Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Orissa", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", "D & N Haveli and Daman & Diu", "Delhi", "Lakshadweep", "Pondicherry");
+
+    function populateStates(stateElementId) {
+        var stateElement = document.getElementById(stateElementId);
+        stateElement.options[0] = new Option("Select State", -1);
+        for (var i = 0; i < states_arr.length; i++) {
+            stateElement.options[stateElement.length] = new Option(states_arr[i]);
+        }
+    }
+
+    function changeLinear(stateElementId) {
+        const state = document.getElementById(stateElementId);
+        const val = state.value;
+
+
+        if (val == "Andhra Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Andhra Pradesh_linear.html';
+        else if (val == "Arunachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Arunachal Pradesh_linear.html';
+        else if (val == "Assam")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Assam_linear.html';
+        else if (val == "Bihar")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Bihar_linear.html';
+        else if (val == "Chhattisgarh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Chhattisgarh_linear.html';
+        else if (val == "Goa")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Goa_linear.html';
+        else if (val == "Gujarat")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Gujarat_linear.html';
+        else if (val == "Haryana")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Haryana_linear.html';
+        else if (val == "Himachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Himachal Pradesh_linear.html';
+        else if (val == "Jammu and Kashmir")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Jammu & Kashmir_linear.html';
+        else if (val == "Jharkhand")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Jharkhand_linear.html';
+        else if (val == "Karnataka")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Karnataka_linear.html';
+        else if (val == "Kerala")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Kerala_linear.html';
+        else if (val == "Madhya Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Madhya Pradesh_linear.html';
+        else if (val == "Maharashtra")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Maharashtra_linear.html';
+        else if (val == "Manipur")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Manipur_linear.html';
+        else if (val == "Meghalaya")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Meghalaya_linear.html';
+        else if (val == "Mizoram")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Mizoram_linear.html';
+        else if (val == "Nagaland")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Nagaland_linear.html';
+        else if (val == "Orissa")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Odisha_linear.html';
+        else if (val == "Punjab")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Punjab_linear.html';
+        else if (val == "Sikkim")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Sikkim_linear.html';
+        else if (val == "Tamil Nadu")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Tamil Nadu_linear.html';
+        else if (val == "Telangana")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Telangana_linear.html';
+        else if (val == "Tripura")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Tripura_linear.html';
+        else if (val == "Uttar Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Uttar Pradesh_linear.html';
+        else if (val == "Uttaranchal")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Uttaranchal_linear.html';
+        else if (val == "West Bengal")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/West Bengal_linear.html';
+        else if (val == "Andaman and Nicobar Islands")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/A & N Islands_linear.html';
+        else if (val == "Chandigarh")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Chandigarh_linear.html';
+        else if (val == "D & N Haveli and Daman & Diu")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/D & N Haveli and Daman & Diu_linear.html';
+        else if (val == "Delhi")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Delhi_linear.html';
+        else if (val == "Lakshadweep")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Lakshadweep_linear.html';
+        else if (val == "Pondicherry")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Puducherry_linear.html';
+        else if (val == "Rajasthan")
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Rajasthan_linear.html';
+        else
+            document.getElementById('iframeID3').src = 'plots/Multi_linear/Assam_linear.html';
+
+
+    }
+
+    function changeSBar(stateElementId) {
+        const state = document.getElementById(stateElementId);
+        const val = state.value;
+
+        if (val == "Andhra Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Andhra Pradesh_stbar.html';
+        else if (val == "Arunachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Arunachal Pradesh_stbar.html';
+        else if (val == "Assam")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Assam_stbar.html';
+        else if (val == "Bihar")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Bihar_stbar.html';
+        else if (val == "Chhattisgarh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Chhattisgarh_stbar.html';
+        else if (val == "Goa")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Goa_stbar.html';
+        else if (val == "Gujarat")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Gujarat_stbar.html';
+        else if (val == "Haryana")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Haryana_stbar.html';
+        else if (val == "Himachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Himachal Pradesh_stbar.html';
+        else if (val == "Jammu and Kashmir")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Jammu & Kashmir_stbar.html';
+        else if (val == "Jharkhand")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Jharkhand_stbar.html';
+        else if (val == "Karnataka")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Karnataka_stbar.html';
+        else if (val == "Kerala")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Kerala_stbar.html';
+        else if (val == "Madhya Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Madhya Pradesh_stbar.html';
+        else if (val == "Maharashtra")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Maharashtra_stbar.html';
+        else if (val == "Manipur")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Manipur_stbar.html';
+        else if (val == "Meghalaya")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Meghalaya_stbar.html';
+        else if (val == "Mizoram")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Mizoram_stbar.html';
+        else if (val == "Nagaland")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Nagaland_stbar.html';
+        else if (val == "Orissa")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Odisha_stbar.html';
+        else if (val == "Punjab")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Punjab_stbar.html';
+        else if (val == "Sikkim")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Sikkim_stbar.html';
+        else if (val == "Tamil Nadu")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Tamil Nadu_stbar.html';
+        else if (val == "Telangana")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Telangana_stbar.html';
+        else if (val == "Tripura")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Tripura_stbar.html';
+        else if (val == "Uttar Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Uttar Pradesh_stbar.html';
+        else if (val == "Uttaranchal")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Uttaranchal_stbar.html';
+        else if (val == "West Bengal")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/West Bengal_stbar.html';
+        else if (val == "Andaman and Nicobar Islands")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/A & N Islands_stbar.html';
+        else if (val == "Chandigarh")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Chandigarh_stbar.html';
+        else if (val == "D & N Haveli and Daman & Diu")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/D & N Haveli and Daman & Diu_stbar.html';
+        else if (val == "Delhi")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Delhi_stbar.html';
+        else if (val == "Lakshadweep")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Lakshadweep_stbar.html';
+        else if (val == "Pondicherry")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Puducherry_stbar.html';
+        else if (val == "Rajasthan")
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Rajasthan_stbar.html';
+        else
+            document.getElementById('iframeID3').src = 'plots/Stacked_Bar_Charts/Assam_stbar.html';
+    }
+
+    function changeGBar(stateElementId) {
+        const state = document.getElementById(stateElementId);
+        const val = state.value;
+        if (val == "Andhra Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Andhra Pradesh_grbar.html';
+        else if (val == "Arunachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Arunachal Pradesh_grbar.html';
+        else if (val == "Assam")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Assam_grbar.html';
+        else if (val == "Bihar")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Bihar_grbar.html';
+        else if (val == "Chhattisgarh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Chhattisgarh_grbar.html';
+        else if (val == "Goa")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Goa_grbar.html';
+        else if (val == "Gujarat")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Gujarat_grbar.html';
+        else if (val == "Haryana")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Haryana_grbar.html';
+        else if (val == "Himachal Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Himachal Pradesh_grbar.html';
+        else if (val == "Jammu and Kashmir")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Jammu & Kashmir_grbar.html';
+        else if (val == "Jharkhand")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Jharkhand_grbar.html';
+        else if (val == "Karnataka")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Karnataka_grbar.html';
+        else if (val == "Kerala")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Kerala_grbar.html';
+        else if (val == "Madhya Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Madhya Pradesh_grbar.html';
+        else if (val == "Maharashtra")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Maharashtra_grbar.html';
+        else if (val == "Manipur")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Manipur_grbar.html';
+        else if (val == "Meghalaya")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Meghalaya_grbar.html';
+        else if (val == "Mizoram")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Mizoram_grbar.html';
+        else if (val == "Nagaland")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Nagaland_grbar.html';
+        else if (val == "Orissa")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Odisha_grbar.html';
+        else if (val == "Punjab")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Punjab_grbar.html';
+        else if (val == "Sikkim")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Sikkim_grbar.html';
+        else if (val == "Tamil Nadu")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Tamil Nadu_grbar.html';
+        else if (val == "Telangana")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Telangana_grbar.html';
+        else if (val == "Tripura")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Tripura_grbar.html';
+        else if (val == "Uttar Pradesh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Uttar Pradesh_grbar.html';
+        else if (val == "Uttaranchal")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Uttaranchal_grbar.html';
+        else if (val == "West Bengal")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/West Bengal_grbar.html';
+        else if (val == "Andaman and Nicobar Islands")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/A & N Islands_grbar.html';
+        else if (val == "Chandigarh")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Chandigarh_grbar.html';
+        else if (val == "D & N Haveli and Daman & Diu")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/D & N Haveli and Daman & Diu_grbar.html';
+        else if (val == "Delhi")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Delhi_grbar.html';
+        else if (val == "Lakshadweep")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Lakshadweep_grbar.html';
+        else if (val == "Pondicherry")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Puducherry_grbar.html';
+        else if (val == "Rajasthan")
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Rajasthan_grbar.html';
+        else {
+            alert("Please select a state");
+            document.getElementById('iframeID3').src = 'plots/Grouped_Bar_Charts/Assam_grbar.html';
+        }
+    }
+</script>
+
+<style>
+
+</style>
+
+<body>
+    <nav class="main">
+        <a href="{{url_for('index')}}"><label style="margin-left:0;"class="logo">CRIME ANALYSIS</label></a>
+        <ul>
+            <li><a href="{{url_for('index')}}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+
+        <nav class="secondnav">
+            <label class="log" href="#"> GRAPHS</label>
+        </nav>
+    </nav>
+    <div style="margin-left:200px; margin-top:130px;" for="state_input">
+        <label>State:</label>
+        <select id="state_input" name="state_input">
+        <option value="disabled selected">Select State</option>
+
+    </select>
+
+
+
+    </div>
+    <script language="javascript">
+        populateStates("state_input");
+    </script>
+    <div style="margin-top:50px; position: absolute;">
+        <div style="margin-left: 20px; margin-top: 50px; " role="tab"><button class="button" onclick="changeLinear('state_input')">Multi-Linear Chart</button></div>
+        <div style="margin-left: 20px; margin-top: 40px;"><button class="button" onclick="changeSBar('state_input')">Stacked Bar Chart</button></div>
+        <div style="margin-left: 20px; margin-top: 40px;"><button class="button" onclick="changeGBar('state_input')">Grouped Bar Chart</button></div>
+
+    </div>
+    <div class="box" style="margin-left:220px; overflow: hidden;">
+        <div class="tab-pane fade show active" id="v-pills-area-chart" role="tabpanel" aria-labelledby="v-pills-area-chart-tab">
+
+            <iframe src="plots/Multi_linear/Assam_linear.html" frameborder="0" width="1200" height="600" id="iframeID3"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p> Copyright &copy; 2023. All rights reserved.</p>
+
+    </footer>
+</body>
+
+
+</html>

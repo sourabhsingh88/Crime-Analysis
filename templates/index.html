@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@0.7.4/dist/tailwind.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Hotpots Home Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='stylesheets/style.css')}}">
+
+
+</head>
+<style>
+    button a {
+        text-decoration: none;
+    }
+</style>
+
+
+<body>
+    <nav class="main">
+        <label class="logo" href="{{url_for('index')}}">CRIME ANALYSIS</label>
+        <ul>
+            <li>
+                <a href="{{url_for('index')}}">Home</a>
+            </li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+            <li><a href="https://github.com/Mubeen-Zaki/Final_Year_Project">Contact</a></li>
+            <li><a href="{{url_for('feedback')}}">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <section class="text-gray-600 body-font">
+        <div style="margin-top: 100px " class="container px-5 py-12 mx-auto">
+            <div class="flex flex-wrap">
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Clustering</h2>
+                    <p class="leading-relaxed text-base mb-4">Identification of Crime Zones(Distrcits) across India using Clustering Analysis</p>
+                    <div class="drop-down">
+                        <button class=button><a class="text-blue-500 inline-flex items-center">Try Now
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                      <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    </svg>
+                    </a>
+                    <div class="dd-content">
+                        <a href="{{url_for('Kmeans')}}">K-Means</a>
+                        
+
+                    </div>
+                  </button>
+                    </div>
+                </div>
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Classification</h2>
+                    <p class="leading-relaxed text-base mb-4">Classification of Districts into different Crime Zones based on Estimated Crime</p>
+                    <div class="drop-down">
+                        <button class=button><a class="text-blue-500 inline-flex items-center">Try Now
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                    
+                </svg>
+              </a>
+              <div class="dd-content">
+                       <a href="{{url_for('Randomfrstcls')}}"> Random Forest Classifier</a> 
+              </div>
+              </button>
+                    </div>
+                </div>
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Linear Regression</h2>
+                    <p class="leading-relaxed text-base mb-4">Total IPC Crime Count Prediction based on Projected Population</p>
+                    <a href="{{url_for('LinearReg')}}"><button class="button" class="text-blue-500 inline-flex items-center">Try Now  
+                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                 <path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </button>
+                    </svg>
+                    </a>
+                </div>
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Time-series Forcasting</h2>
+                    <p class="leading-relaxed text-base mb-4">Using Time Series Forecasting(fbprohet) for Crime Prediction.</p>
+                    <div class="drop-down">
+                        <button class=button><a class="text-blue-500 inline-flex items-center">Try Now  
+               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+               <path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            </a>
+                        <div class="dd-content">
+                            <a href="{{url_for('timeseriescr')}}"> Crime Rate Forecast</a>
+                            <a href="{{url_for('timeseriesipc')}}"> Total IPC Forecast</a>
+                        </div>
+                    </button>
+
+                    </div>
+                </div>
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Analysis</h2>
+                    <p class="leading-relaxed text-base mb-4">Using Visualizations (Google Charts and Plotly) for Analysis of Crime Data.</p>
+                    <div class="drop-down"> <button class=button><a class="text-blue-500 inline-flex items-center">Try Now
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
+              <div class="dd-content">
+                <a href="{{url_for('analysis')}}">Google Charts</a>
+                <a href="{{url_for('analysis2')}}">Plotly</a>
+               
+              </div>
+            
+              </button>
+                    </div>
+                </div>
+
+
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Geo-Spatial Analysis</h2>
+                    <p class="leading-relaxed text-base mb-4">Using Choropleth to Visualize Crime Data on Geographical Locations.</p>
+                    <div class="drop-down"> <button class=button><a class="text-blue-500 inline-flex items-center">Try Now  
+               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+               <path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+               <div class="dd-content">
+                <a href="{{url_for('analysis3')}}">Choropleth</a>
+
+               </div>
+                </button>
+                    </div>
+                    </svg>
+                    </a>
+                </div>
+
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Crime Feed</h2>
+                    <p class="leading-relaxed text-base mb-4">Latest News Headlines and Webscrapped Data Plotted on Heatmap.</p>
+                    <a href="{{url_for('crimefeed')}}"> <button class=button class="text-blue-500 inline-flex items-center">Try Now  
+                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                 <path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </button>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+                    <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Data</h2>
+                    <p class="leading-relaxed text-base mb-4">Check out the multiple crime datasets that were used in this project.</p>
+                    <a href="{{url_for('datadisp')}}"><button class=button class="text-blue-500 inline-flex items-center" >Try Now  
+                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                 <path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                  </button>
+                    </svg>
+                    </a>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+    <div style="clear:both;">
+
+    </div>
+    <div style="margin-bottom:100px;">
+
+    </div>
+    <footer style="height:13%;">
+        <p> Copyright &copy; 2023. All rights reserved.</p>
+
+    </footer>
+
+</body>
+
+</html>
